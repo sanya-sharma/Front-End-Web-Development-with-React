@@ -22,7 +22,7 @@ class DishDetail extends Component {
                             <br/>
                             {thiscomment.comment}
                             <br/>
-                            --{thiscomment.author}, {thiscomment.date}
+                            --{thiscomment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(thiscomment.date)))}
                         </div>
                 );
             });
@@ -43,24 +43,24 @@ class DishDetail extends Component {
 
     }
 
-    renderDish(selectedDish){
+    renderDish(dish){
         console.log("Print dish starts 2");
-        if(selectedDish!=null){
+        if(dish!=null){
 
             return(
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-md-5 m-1">
                             <Card>
-                                <CardImg width="100%" src={this.props.selectedDish.image} alt={this.props.selectedDish.name}/>
+                                <CardImg width="100%" src={this.props.dish.image} alt={this.props.dish.name}/>
                                 <CardBody>
-                                    <CardTitle>{this.props.selectedDish.name}</CardTitle>
-                                    <CardText>{this.props.selectedDish.description}</CardText>
+                                    <CardTitle>{this.props.dish.name}</CardTitle>
+                                    <CardText>{this.props.dish.description}</CardText>
                                 </CardBody>
                             </Card>
                         </div>
                         <div className="col-12 col-md-5 m-1">
-                            {this.renderComments(this.props.selectedDish.comments)}
+                            {this.renderComments(this.props.dish.comments)}
                         </div>
                     </div>
                 </div>
@@ -75,11 +75,13 @@ class DishDetail extends Component {
 
     render() {
 
-        const dish = this.props.selectedDish;
         console.log("Print dish starts 1");
 
         return(
-            this.renderDish(this.props.selectedDish)
+            <div className="container">
+                {this.renderDish(this.props.dish)}
+
+            </div>
         );
     }
 
