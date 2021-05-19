@@ -8,7 +8,7 @@ import { baseUrl } from '../shared/baseUrl.js';
         return(
             <Card>
                 <Link to={`/menu/${dish.id}`} >
-                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name}/>
+                <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
                     <CardImgOverlay body className="ml-5">
                         <CardTitle>{dish.name}</CardTitle>
                     </CardImgOverlay>
